@@ -88,9 +88,9 @@ def process(time, rd1):
             with open('./mod', 'rb') as p1:
                 clif = pickle.load(p1)
             preds=clif.predict(X_tr)
-            mbk_means = np.sort(clif.cluster_centers_, axis = 0)
-            mbk_means_labels = pairwise_distances_argmin(X_tr, mbk_means)
-            print(count," ",mbk_means_labels)
+            k_means = np.sort(clif.cluster_centers_, axis = 0)
+            k_means_labels = pairwise_distances_argmin(X_tr, k_means)
+            print(count," ",k_means_labels)
             count+=1
         clif.partial_fit(X_tr)
         pickle.dump(clif, open('./mod', 'wb'))
